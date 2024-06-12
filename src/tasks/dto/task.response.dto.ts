@@ -3,7 +3,7 @@ import { ApiResponseProperty } from '@nestjs/swagger';
 import { ObjectId } from 'mongoose';
 import { TaskStatus } from './task-status';
 
-export class TaskResponsetDto {
+export class TaskResponseDto {
   @ApiResponseProperty({
     example: '64e7b40704f6b0d4d0440b26',
   })

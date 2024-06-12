@@ -23,7 +23,7 @@ export class TaskCreateDto {
     description: "Task status",
   })
   @IsEnum(TaskStatus)
-  @IsString()
+  // @IsString()
   status: TaskStatus;
 
   @ApiPropertyOptional({

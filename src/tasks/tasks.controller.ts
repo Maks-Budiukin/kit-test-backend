@@ -25,10 +25,10 @@ import { TaskCreateDto } from './dto/create-task.dto';
 @ApiBearerAuth()
 @Controller('tasks')
 export class TasksController {
-    constructor(private readonly tasksService: TasksService) {}
+    constructor(private readonly tasksService: TasksService,) {}
 
-  @Get('')
-  @ApiOperation({ summary: 'Get tasks' })
+  @Get(':id')
+  @ApiOperation({ summary: 'Get tasks by Project ID' })
   @ApiResponse({
     status: 200,
     description: "List of tasks",
@@ -48,9 +48,8 @@ export class TasksController {
   })
   async createTask(
     @Body() dto: TaskCreateDto,
-    @Param('id') id: string
   ): Promise<TaskResponseDto> {
-    return await this.tasksService.createTask(dto, id);
+    return await this.tasksService.createTask(dto);
   }
 
   @Patch(':id')

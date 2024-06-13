@@ -1,7 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { HydratedDocument, ObjectId } from 'mongoose';
-import { Project } from 'src/projects/projects.model';
-import { User } from 'src/users/users.model';
 import { TaskStatus } from './dto/task-status';
 
 export type TaskDocument = HydratedDocument<Task>;
@@ -17,10 +15,10 @@ export class Task {
   project: ObjectId;
 
   @Prop({ type: String, enum: TaskStatus, default: TaskStatus.TODO })
-  status: TaskStatus;
+  status?: TaskStatus;
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User', default: null })
-  assignee: ObjectId;
+  assignee?: ObjectId;
 }
 
 export const TaskSchema = SchemaFactory.createForClass(Task);

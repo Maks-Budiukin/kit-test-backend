@@ -1,13 +1,13 @@
-import { IsMongoId, IsString } from 'class-validator';
+import { IsArray, IsString } from 'class-validator';
 import { ApiResponseProperty } from '@nestjs/swagger';
-import { ObjectId } from 'mongoose';
+import { ObjectId, Types } from 'mongoose';
 
 export class ProjectResponseDto {
   @ApiResponseProperty({
     example: '64e7b40704f6b0d4d0440b26',
   })
   @IsString()
-  _id: ObjectId;
+  _id: Types.ObjectId;
 
   @ApiResponseProperty({
     example: 'Very Important Project',
@@ -18,6 +18,6 @@ export class ProjectResponseDto {
   @ApiResponseProperty({
     example: ['64e7b40704f6b0d4d0440b26'],
   })
-  @IsMongoId({each: true})
-  participants: ObjectId[];
+  @IsArray()
+  participants?: ObjectId[] ;
 }

@@ -43,6 +43,19 @@ export class ProjectsController {
     return await this.projectsService.getProjects(user);
   }
 
+  @Get(':id')
+  @ApiOperation({ summary: 'Get one project' })
+  @ApiResponse({
+    status: 200,
+    description: "Get one project",
+    type: ProjectResponseDto,
+  })
+  async getProjectById(
+     @Param('id') id: string,
+  ): Promise<ProjectResponseDto> {
+    return await this.projectsService.getProjectById(id);
+  }
+
   @Post('')
   @ApiOperation({ summary: 'Create project' })
   @ApiResponse({
@@ -67,9 +80,8 @@ export class ProjectsController {
   async updateProject(
     @Body() dto: ProjectUpdateDto,
     @Param('id') id: string,
-    @GetUser() user: UserResponseDto,
   ): Promise<ProjectResponseDto> {
-    return await this.projectsService.updateProject(user, id, dto);
+    return await this.projectsService.updateProject(id, dto);
   }
 
   @Delete(':id')
@@ -81,8 +93,7 @@ export class ProjectsController {
   })
   async deleteProject(
     @Param('id') id: string,
-    @GetUser() user: UserResponseDto,
   ): Promise<ProjectResponseDto> {
-    return await this.projectsService.deleteProject(id, user);
+    return await this.projectsService.deleteProject(id);
   }
 }

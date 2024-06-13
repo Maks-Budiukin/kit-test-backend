@@ -1,6 +1,5 @@
-import { IsString, IsMongoId } from 'class-validator';
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { ObjectId } from 'mongoose';
+import { IsString } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class ProjectCreateDto {
   @ApiProperty({

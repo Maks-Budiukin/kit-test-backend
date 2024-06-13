@@ -1,4 +1,4 @@
-import { IsMongoId, IsString, IsEnum } from 'class-validator';
+import { IsMongoId, IsString, IsEnum, IsOptional } from 'class-validator';
 import { ApiResponseProperty } from '@nestjs/swagger';
 import { ObjectId } from 'mongoose';
 import { TaskStatus } from './task-status';
@@ -25,13 +25,15 @@ export class TaskResponseDto {
   @ApiResponseProperty({
     example: 'DONE',
   })
+  @IsOptional()
   @IsEnum(TaskStatus)
   @IsString()
-  status: TaskStatus;
+  status?: TaskStatus;
 
   @ApiResponseProperty({
     example: '64e7b40704f6b0d4d0440b26',
   })
+  @IsOptional()
   @IsMongoId()
-  assignee: ObjectId;
+  assignee?: ObjectId;
 }

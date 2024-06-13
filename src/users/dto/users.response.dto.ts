@@ -1,13 +1,13 @@
 import { IsString, IsEmail } from 'class-validator';
 import { ApiResponseProperty } from '@nestjs/swagger';
-import { ObjectId } from 'mongoose';
+import {  Types } from 'mongoose';
 
 export class UserResponseDto {
   @ApiResponseProperty({
     example: '64e7b40704f6b0d4d0440b26',
   })
   @IsString()
-  _id: ObjectId;
+  _id: Types.ObjectId;
 
   @ApiResponseProperty({
     example: 'Bob Marley',
